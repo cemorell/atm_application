@@ -1,4 +1,9 @@
+
 //Begin with the document ready function
+
+$(function() {
+    console.log( "ready!" );
+});
 
     //Checking account deposit function
 
@@ -7,6 +12,20 @@
         //Get value from the amountChecking input field
 
         //Take that value and add it to the existing value in the checkingBalance div
+
+var currentBalanceChecking = 0
+
+$('#depositChecking').click(function() {
+    console.log("Checking deposited!!");
+    var checkingDeposit = $('#amountChecking').val();
+    currentBalanceChecking = checkingDeposit + currentBalanceChecking;
+    $('checkingBalance').text(currentBalanceChecking);
+
+});
+
+
+
+
 
     //Checking account withdrawl funtion
 

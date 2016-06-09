@@ -16,10 +16,13 @@ $(function() {
 var currentBalanceChecking = 0
 
 $('#depositChecking').click(function() {
-    console.log("Checking deposited!!");
-    var checkingDeposit = $('#amountChecking').val();
+  console.log("Checking deposited!!");
+  $('#amountChecking').submit(function(){
+    console.log("submitted checking deposit!!");
+    var checkingDeposit = $(this).val();
     currentBalanceChecking = checkingDeposit + currentBalanceChecking;
-    $('checkingBalance').text(currentBalanceChecking);
+    $('#checkingBalance').text(currentBalanceChecking);
+      });
 
 });
 

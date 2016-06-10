@@ -1,65 +1,29 @@
 
 //Begin with the document ready function
 
-$(function() {
-    console.log( "ready!" );
+$(document).ready (function() {
+    $('#depositChecking').click(function(event) {
+      var depositAmount= parseInt($('#amountChecking').val(), 10);
+      var currentBalanceChecking = parseInt($('#checkingBalance').text().replace('$',''), 10);
+      var newBalance =   depositAmount + currentBalanceChecking;
+      $('#checkingBalance').text("$" + newBalance);
+  });
+
+      console.log( "ready!");
+    $('#withdrawChecking').click(function(event) {
+      var withdrawAmount= parseInt($('#amountChecking').val(), 10);
+      var currentBalanceChecking = parseInt($('#checkingBalance').text().replace('$',''), 10);
+      var newBalance =   currentBalanceChecking - withdrawAmount;
+      $('#checkingBalance').text("$" + newBalance);
+
+      if (withdrawAmount<=currentBalanceChecking) {
+        $('checkingBalance').text("$" + newBalance);
+      }
+        else {
+          alert("Champaign taste with a Budwiser budget!")
+        }
+
+  });
 });
 
-    //Checking account deposit function
 
-      //On click of the depositChecking button
-
-        //Get value from the amountChecking input field
-
-        //Take that value and add it to the existing value in the checkingBalance div
-
-var currentBalanceChecking = 0
-
-$('#depositChecking').click(function() {
-  console.log("Checking deposited!!");
-  $('#amountChecking').submit(function(){
-    console.log("submitted checking deposit!!");
-    var checkingDeposit = $(this).val();
-    currentBalanceChecking = checkingDeposit + currentBalanceChecking;
-    $('#checkingBalance').text(currentBalanceChecking);
-      });
-
-});
-
-
-
-
-
-    //Checking account withdrawl funtion
-
-      //On click of the withdrawChecking button
-
-        //Get value from the amountChecking input field
-
-        // If that value is greater than the value in the account ignore that action
-        // In other words if this would put the account into a negative balance do not allow it
-
-        //Else subtract that value from the current amount in the checking account
-
-    //Savings account deposit function
-
-      //On click of the depositSavings button
-
-        //Get value from the amountSavings input field
-
-        //Take that value and add it to the existing value in the savingsBalance div
-
-    //Savings account withdraw funtion
-
-      //On click of the withdrawl button
-
-        //Get value from the amountSavings input field
-
-         //If that value is greater than the value in the account ignore that action
-         //In other words if this would put the account into a negative balance do not allow it
-
-         //Else subtract that value from the current amount in the savings account
-
-// Bonus-- get the two accounts to work with each other and allow for overdraft protection
-
-// Double Bonus-- This isnt very DRY.  Using the keyword "this" see if you can make the withdraw and deposit functions work for both accounts
